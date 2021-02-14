@@ -7,10 +7,10 @@ const Manager = require("./lib/Manager.js");
 const employees = [];
 
 // * Your application should prompt the user for information like their name, location, bio, LinkedIn URL, and GitHub URL. Feel free to add any additional prompts you think of.
-startHtml();
+
 
 function init(){
-    startHtml();
+    htmlStart();
     addMembers();
   }
   init();
@@ -64,8 +64,8 @@ function addMembers(){
         }
         employees.push(newMember);
         console.log(newMember);
-        startHtml(newMember);
-        .then(function(){
+        startHtml(newMember)
+        .then(function(moreMembers) {
             if (moreMembers === "yes"){
                 addMembers();
             } else {
@@ -73,8 +73,8 @@ function addMembers(){
             }
                 
         });
-    }
-    );
+    });
+    
 }
 
 function htmlStart(){
