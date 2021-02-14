@@ -53,7 +53,7 @@ function addMembers(){
             name: 'moreMembers'
         }
     ])
-    .then(function({name, id, email, role}) {
+    .then(function({name, id, email, role, moreMembers}) {
         let newMember
         if (role==="Engineer"){
             newMember = new Engineer(name, id, email, role);
@@ -65,8 +65,9 @@ function addMembers(){
         employees.push(newMember);
         console.log(newMember);
         startHtml(newMember)
-        .then(function(moreMembers) {
-            if (moreMembers === "yes"){
+        .then(function() {
+            console.log(moreMembers);
+            if (moreMembers === "Yes"){
                 addMembers();
             } else {
                 endHtml();
@@ -124,7 +125,7 @@ function startHtml(member){
             data = `
             <div class="col-6">
             <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Engineer</h5>
+            <h5 class="card-header">${name}<br /><br />Intern</h5>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
                 <li class="list-group-item">Email Address: ${email}</li>
@@ -135,7 +136,7 @@ function startHtml(member){
         data = `
             <div class="col-6">
             <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Engineer</h5>
+            <h5 class="card-header">${name}<br /><br />Manager</h5>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
                 <li class="list-group-item">Email Address: ${email}</li>
