@@ -52,7 +52,7 @@ inquirer
         newMember = new Manager(name, id, email, role)
       }
       employees.push(newMember);
-            addHtml(newMember);
+            startHtml(newMember);
   }
 );
 
