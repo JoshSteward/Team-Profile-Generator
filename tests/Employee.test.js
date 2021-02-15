@@ -1,0 +1,19 @@
+const Employee = require('../lib/Employee');
+
+test("Can set name via constructor arguments", () => {
+    const name = "Josh";
+    const e = new Employee(name);
+    expect(e.name).toBe(name);
+  });
+  
+  test("Can set id via constructor argument", () => {
+    const testValue = 100;
+    const e = new Employee("Josh", testValue);
+    expect(e.id).toBe(testValue);
+  });
+  
+  test("Can set email via constructor argument", () => {
+    const testValue = "test@test.com";
+    const e = new Employee("Josh", 1, testValue);
+    expect(e.email).toBe(testValue);
+  });
