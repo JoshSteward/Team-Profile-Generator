@@ -43,24 +43,7 @@ function addMembers(){
         ],
         name:'role'
         },
-    ]) 
-        .then(function({name, role, id, email}){
-            let personalInfo = ""
-            if (role === "Engineer"){
-                personalInfo = "Github"
-            } else if (role === "Intern") {
-                personalInfo = "School" 
-            } else 
-                personalInfo = "Office number"
-        },
-        inquirer
-        .prompt([
-            {
-            type: "input",
-            message: "please input ${personalInfo}",
-            name: personalInfo
-            }
-        ,
+    
         {
             type: 'list',
             message: 'Would you like to add more members?',
@@ -71,15 +54,14 @@ function addMembers(){
             name:'moreMembers'
         }
     ])
-        )
     .then(function({name, id, email, role, moreMembers}) {
         let newMember
         if (role==="Engineer"){
-            newMember = new Engineer(name, id, email, personalInfo);
+            newMember = new Engineer(name, id, email);
         } else if (role==="Intern"){
-                newMember = new Intern(name, id, email, personalInfo);
+                newMember = new Intern(name, id, email);
         } else {
-            newMember = new Manager(name, id, email, personalInfo);
+            newMember = new Manager(name, id, email);
         }
         employees.push(newMember);
         console.log(newMember);
@@ -93,8 +75,7 @@ function addMembers(){
             }
                 
         });
-    });
-     
+    })
 }
 
 function htmlStart(){
